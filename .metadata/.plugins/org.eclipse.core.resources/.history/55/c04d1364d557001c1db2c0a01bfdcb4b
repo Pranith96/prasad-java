@@ -1,0 +1,14 @@
+public class Addition {
+
+	private static int j = 5;
+	public static void main(String args[]) {
+		int i = 10;
+		System.out.println(i);
+		System.out.println(j);
+	}
+	
+	public void hello() {
+		int k = 15;
+		System.out.println(j);
+	}
+}
