@@ -3,4 +3,7 @@
     <fullyQualifiedTypeName name="Addition"/>
     <fullyQualifiedTypeName name="MotorBikeImpl"/>
     <fullyQualifiedTypeName name="MotorBikeImpl1"/>
+    <fullyQualifiedTypeName name="ICICIBank"/>
+    <fullyQualifiedTypeName name="HDFCBank"/>
+    <fullyQualifiedTypeName name="AxisBank"/>
 </qualifiedTypeNameHistroy>
