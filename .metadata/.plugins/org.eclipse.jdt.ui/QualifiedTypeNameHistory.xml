@@ -6,4 +6,7 @@
     <fullyQualifiedTypeName name="ICICIBank"/>
     <fullyQualifiedTypeName name="HDFCBank"/>
     <fullyQualifiedTypeName name="AxisBank"/>
+    <fullyQualifiedTypeName name="com.example.demo.Bird1"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
