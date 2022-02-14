@@ -9,4 +9,7 @@
     <fullyQualifiedTypeName name="com.example.demo.Bird1"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="com.sun.org.apache.xalan.internal.xsltc.compiler.CompilerException"/>
+    <fullyQualifiedTypeName name="CustomRunTimeException"/>
 </qualifiedTypeNameHistroy>
