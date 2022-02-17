@@ -12,4 +12,6 @@
     <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.xalan.internal.xsltc.compiler.CompilerException"/>
     <fullyQualifiedTypeName name="CustomRunTimeException"/>
+    <fullyQualifiedTypeName name="CustomCompileTimeExampleExample"/>
+    <fullyQualifiedTypeName name="CustomCompileTimeException"/>
 </qualifiedTypeNameHistroy>
