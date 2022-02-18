@@ -14,4 +14,6 @@
     <fullyQualifiedTypeName name="CustomRunTimeException"/>
     <fullyQualifiedTypeName name="CustomCompileTimeExampleExample"/>
     <fullyQualifiedTypeName name="CustomCompileTimeException"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 </qualifiedTypeNameHistroy>
