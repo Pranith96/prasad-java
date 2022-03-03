@@ -17,6 +17,5 @@ public class MainMethod {
 		bikeResponse.mirror();
 		bikeResponse.tire();
 		bikeResponse.engine();
-		
 	}
 }
