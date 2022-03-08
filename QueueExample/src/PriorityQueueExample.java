@@ -21,7 +21,7 @@ public class PriorityQueueExample {
 		queue.poll();
 		System.out.println(queue);
 
-		Stack stack = new Stack();
+		Stack<Integer> stack = new Stack<>();
 		stack.push(5);
 		stack.add(2);
 		stack.add(3);
