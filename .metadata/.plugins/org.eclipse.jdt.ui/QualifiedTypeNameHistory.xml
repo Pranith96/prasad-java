@@ -31,4 +31,9 @@
     <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="PriorityQueueExample"/>
     <fullyQualifiedTypeName name="java.util.PriorityQueue"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+    <fullyQualifiedTypeName name="FileInputStreamExample"/>
+    <fullyQualifiedTypeName name="BufferedOutPutStreamExample"/>
+    <fullyQualifiedTypeName name="BufferedInputStreamExample"/>
 </qualifiedTypeNameHistroy>
