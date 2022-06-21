@@ -36,4 +36,6 @@
     <fullyQualifiedTypeName name="FileInputStreamExample"/>
     <fullyQualifiedTypeName name="BufferedOutPutStreamExample"/>
     <fullyQualifiedTypeName name="BufferedInputStreamExample"/>
+    <fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
+    <fullyQualifiedTypeName name="java.util.function.Predicate"/>
 </qualifiedTypeNameHistroy>
