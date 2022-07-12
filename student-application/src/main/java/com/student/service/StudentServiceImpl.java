@@ -36,7 +36,25 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public Student getDetailsById(Integer studentId) {
 		Optional<Student> response = studentRepository.findById(studentId);
-		if(!response.isPresent()) {
+		if (!response.isPresent()) {
+			throw new RuntimeException("Data not found");
+		}
+		return response.get();
+	}
+
+	@Override
+	public List<Student> getDetailsByName(String name) {
+		List<Student> response = studentRepository.findByName(name);
+		if (response.isEmpty() || response == null) {
+			throw new RuntimeException("Student data is Empty");
+		}
+		return response;
+	}
+
+	@Override
+	public Student getStudentLogin(String loginId, String password) {
+		Optional<Student> response = studentRepository.findByLoginIdAndPassword(loginId, password);
+		if (!response.isPresent()) {
 			throw new RuntimeException("Data not found");
 		}
 		return response.get();

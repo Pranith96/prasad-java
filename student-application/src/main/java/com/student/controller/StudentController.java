@@ -28,23 +28,35 @@ public class StudentController {
 		String response = studentService.saveStudent(student);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
-	
+
 	@GetMapping("/get-all")
-	public ResponseEntity<List<Student>> getAllStudentRecords(){
+	public ResponseEntity<List<Student>> getAllStudentRecords() {
 		List<Student> response = studentService.getAllDetails();
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
-	
+
 	@GetMapping("/get/{studentId}")
-	public ResponseEntity<Student> getStudentRecordsById(@PathVariable("studentId") Integer studentId){
-		Student response = studentService.getDetailsById(studentId);
-		return ResponseEntity.status(HttpStatus.OK).body(response);
-	}
-	
-	@GetMapping("/get/id")
-	public ResponseEntity<Student> getStudentRecord(@RequestParam("studentId") Integer studentId){
+	public ResponseEntity<Student> getStudentRecordsById(@PathVariable("studentId") Integer studentId) {
 		Student response = studentService.getDetailsById(studentId);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
+	@GetMapping("/get/id")
+	public ResponseEntity<Student> getStudentRecord(@RequestParam("studentId") Integer studentId) {
+		Student response = studentService.getDetailsById(studentId);
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+
+	@GetMapping("/get/name/{name}")
+	public ResponseEntity<List<Student>> getStudentRecordsByName(@PathVariable("name") String name) {
+		List<Student> response = studentService.getDetailsByName(name);
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+
+	@GetMapping("/get/login/{loginId}/{password}")
+	public ResponseEntity<Student> getStudentLogin(@PathVariable("loginId") String loginId,
+			@PathVariable("password") String password) {
+		Student response = studentService.getStudentLogin(loginId, password);
+		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
 }
