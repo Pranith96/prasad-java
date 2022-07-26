@@ -16,4 +16,8 @@ public interface StudentService {
 
 	Student getStudentLogin(String loginId, String password);
 
+	String updateStudentName(String name, Integer studentId);
+
+	String deleteStudent(Integer studentId);
+
 }

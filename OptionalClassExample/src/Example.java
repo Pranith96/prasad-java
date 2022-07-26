@@ -10,7 +10,7 @@ public class Example {
 		s[3] = "Hello Hi";
 		Optional<String> checkNull = Optional.ofNullable(s[3]);
 		System.out.println(checkNull);
-		//System.out.println(checkNull.get());
+		System.out.println(checkNull.get());
 		if (checkNull.isPresent()) {
 			String str = s[3].toUpperCase();
 			System.out.println(str);
