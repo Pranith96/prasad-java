@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.student.entity.Student;
+import com.student.exceptions.StudentNotFoundException;
 import com.student.repository.StudentRepository;
 
 @Service
@@ -30,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> getAllDetails() {
 		List<Student> list = studentRepository.findAll();
 		if (list.isEmpty() || list == null) {
-			throw new RuntimeException("Student data is Empty");
+			throw new StudentNotFoundException("Student data is Empty");
 		}
 		return list;
 	}
@@ -39,7 +40,7 @@ public class StudentServiceImpl implements StudentService {
 	public Student getDetailsById(Integer studentId) {
 		Optional<Student> response = studentRepository.findById(studentId);
 		if (!response.isPresent()) {
-			throw new RuntimeException("Data not found");
+			throw new StudentNotFoundException("Data not found");
 		}
 		return response.get();
 	}
@@ -49,7 +50,7 @@ public class StudentServiceImpl implements StudentService {
 		//List<Student> response = studentRepository.findByName(name);
 		List<Student> response = studentRepository.getByName(name);
 		if (response.isEmpty() || response == null) {
-			throw new RuntimeException("Student data is Empty");
+			throw new StudentNotFoundException("Student data is Empty");
 		}
 		return response;
 	}
@@ -59,7 +60,7 @@ public class StudentServiceImpl implements StudentService {
 		//Optional<Student> response = studentRepository.findByLoginIdAndPassword(loginId, password);
 		Optional<Student> response = studentRepository.getByLoginIdAndPassword(loginId, password);
 		if (!response.isPresent()) {
-			throw new RuntimeException("Data not found");
+			throw new StudentNotFoundException("Data not found");
 		}
 		return response.get();
 	}
