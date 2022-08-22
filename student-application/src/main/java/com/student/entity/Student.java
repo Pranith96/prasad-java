@@ -7,8 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "student_table")
+//@Setter
+//@Getter
+//@AllArgsConstructor
+//@NoArgsConstructor
+@Data
 public class Student {
 
 	@Id
@@ -26,64 +33,5 @@ public class Student {
 	@Column(name = "password")
 	private String password;
 
-	public Integer getStudentId() {
-		return studentId;
-	}
-
-	public void setStudentId(Integer studentId) {
-		this.studentId = studentId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getMobileNumber() {
-		return mobileNumber;
-	}
-
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getLoginId() {
-		return loginId;
-	}
-
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Student(Integer studentId, String name, String mobileNumber, String email, String loginId, String password) {
-		this.studentId = studentId;
-		this.name = name;
-		this.mobileNumber = mobileNumber;
-		this.email = email;
-		this.loginId = loginId;
-		this.password = password;
-	}
-
-	public Student() {
-	}
 
 }

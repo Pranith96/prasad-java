@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,11 +11,9 @@ import com.student.entity.Student;
 import com.student.exceptions.StudentNotFoundException;
 import com.student.repository.StudentRepository;
 
-//@Primary
-@Service(value = "service1")
+@Service(value="service2")
 @Transactional
-@Profile(value = {"dev","local","qa","prod"})
-public class StudentServiceImpl implements StudentService {
+public class StudentServiceImpl2 implements StudentService {
 
 	@Autowired
 	StudentRepository studentRepository;
