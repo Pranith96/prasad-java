@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.student.dto.AddressDto;
+import com.student.dto.StudentDto;
+import com.student.dto.StudentResponseDto;
 import com.student.entity.Student;
 import com.student.exceptions.StudentNotFoundException;
 import com.student.repository.StudentRepository;
@@ -15,7 +18,7 @@ import com.student.repository.StudentRepository;
 //@Primary
 @Service(value = "service1")
 @Transactional
-@Profile(value = {"dev","local","qa","prod"})
+@Profile(value = { "dev", "local", "qa", "prod" })
 public class StudentServiceImpl implements StudentService {
 
 	@Autowired
@@ -23,6 +26,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public String saveStudent(Student student) {
+		student.getAddress().setStudent(student);
 		Student response = studentRepository.save(student);
 		if (response == null) {
 			return "data not saved";
@@ -40,17 +44,33 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student getDetailsById(Integer studentId) {
+	public StudentResponseDto getDetailsById(Integer studentId) {
 		Optional<Student> response = studentRepository.findById(studentId);
 		if (!response.isPresent()) {
 			throw new StudentNotFoundException("Data not found");
 		}
-		return response.get();
+
+		StudentResponseDto dto = new StudentResponseDto();
+		StudentDto studentDto = new StudentDto();
+		studentDto.setEmail(response.get().getEmail());
+		studentDto.setLoginId(response.get().getLoginId());
+		studentDto.setMobileNumber(response.get().getMobileNumber());
+		studentDto.setName(response.get().getMobileNumber());
+
+		AddressDto addressDto = new AddressDto();
+		addressDto.setCity(response.get().getAddress().getCity());
+		addressDto.setLocality(response.get().getAddress().getLocality());
+		addressDto.setPlotNo(response.get().getAddress().getPlotNo());
+		addressDto.setState(response.get().getAddress().getState());
+		
+		dto.setAddress(addressDto);
+		dto.setStudent(studentDto);
+		return dto;
 	}
 
 	@Override
 	public List<Student> getDetailsByName(String name) {
-		//List<Student> response = studentRepository.findByName(name);
+		// List<Student> response = studentRepository.findByName(name);
 		List<Student> response = studentRepository.getByName(name);
 		if (response.isEmpty() || response == null) {
 			throw new StudentNotFoundException("Student data is Empty");
@@ -60,7 +80,8 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Student getStudentLogin(String loginId, String password) {
-		//Optional<Student> response = studentRepository.findByLoginIdAndPassword(loginId, password);
+		// Optional<Student> response =
+		// studentRepository.findByLoginIdAndPassword(loginId, password);
 		Optional<Student> response = studentRepository.getByLoginIdAndPassword(loginId, password);
 		if (!response.isPresent()) {
 			throw new StudentNotFoundException("Data not found");
@@ -71,14 +92,14 @@ public class StudentServiceImpl implements StudentService {
 	@Transactional
 	@Override
 	public String updateStudentName(String name, Integer studentId) {
-		studentRepository.updateName(name,studentId);
+		studentRepository.updateName(name, studentId);
 		return "Details updated successfully";
 	}
 
 	@Override
 	public String deleteStudent(Integer studentId) {
-		Student response = getDetailsById(studentId);
-		//studentRepository.delete(response);
+		//Student response = getDetailsById(studentId);
+		// studentRepository.delete(response);
 		studentRepository.deleteById(studentId);
 		return "Deleted successdully";
 	}

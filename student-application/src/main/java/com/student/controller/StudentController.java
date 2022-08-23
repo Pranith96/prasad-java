@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.student.dto.StudentResponseDto;
 import com.student.entity.Student;
 import com.student.service.StudentService;
 
@@ -23,7 +24,7 @@ import com.student.service.StudentService;
 @RequestMapping("/student")
 public class StudentController {
 
-	@Qualifier(value = "service2")
+	@Qualifier(value = "service1")
 	@Autowired
 	StudentService studentService;
 
@@ -40,14 +41,14 @@ public class StudentController {
 	}
 
 	@GetMapping("/get/{studentId}")
-	public ResponseEntity<Student> getStudentRecordsById(@PathVariable("studentId") Integer studentId) {
-		Student response = studentService.getDetailsById(studentId);
+	public ResponseEntity<StudentResponseDto> getStudentRecordsById(@PathVariable("studentId") Integer studentId) {
+		StudentResponseDto response = studentService.getDetailsById(studentId);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
 	@GetMapping("/get/id")
-	public ResponseEntity<Student> getStudentRecord(@RequestParam("studentId") Integer studentId) {
-		Student response = studentService.getDetailsById(studentId);
+	public ResponseEntity<StudentResponseDto> getStudentRecord(@RequestParam("studentId") Integer studentId) {
+		StudentResponseDto response = studentService.getDetailsById(studentId);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
