@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.student.dto.AddressDto;
 import com.student.dto.StudentDto;
 import com.student.dto.StudentResponseDto;
+import com.student.entity.Status;
 import com.student.entity.Student;
 import com.student.exceptions.StudentNotFoundException;
 import com.student.repository.StudentRepository;
@@ -27,6 +28,7 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public String saveStudent(Student student) {
 		student.getAddress().setStudent(student);
+		student.setStatus(Status.ACTIVE);
 		Student response = studentRepository.save(student);
 		if (response == null) {
 			return "data not saved";
@@ -62,7 +64,7 @@ public class StudentServiceImpl implements StudentService {
 		addressDto.setLocality(response.get().getAddress().getLocality());
 		addressDto.setPlotNo(response.get().getAddress().getPlotNo());
 		addressDto.setState(response.get().getAddress().getState());
-		
+
 		dto.setAddress(addressDto);
 		dto.setStudent(studentDto);
 		return dto;
@@ -98,7 +100,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public String deleteStudent(Integer studentId) {
-		//Student response = getDetailsById(studentId);
+		// Student response = getDetailsById(studentId);
 		// studentRepository.delete(response);
 		studentRepository.deleteById(studentId);
 		return "Deleted successdully";

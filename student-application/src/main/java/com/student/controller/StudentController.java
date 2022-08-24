@@ -20,6 +20,8 @@ import com.student.dto.StudentResponseDto;
 import com.student.entity.Student;
 import com.student.service.StudentService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/student")
 public class StudentController {
@@ -28,6 +30,7 @@ public class StudentController {
 	@Autowired
 	StudentService studentService;
 
+	@ApiOperation(value = "Student account Creation API", notes = "Please provide all the info for Student account creation", response = Student.class)
 	@PostMapping("/save")
 	public ResponseEntity<String> createStudent(@RequestBody Student student) {
 		String response = studentService.saveStudent(student);
@@ -35,12 +38,14 @@ public class StudentController {
 	}
 
 	@GetMapping("/get-all")
+	@ApiOperation(value = "Student Details Fetcn API", notes = "Please provide all the info for Fetching student records", response = Student.class)
 	public ResponseEntity<List<Student>> getAllStudentRecords() {
 		List<Student> response = studentService.getAllDetails();
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
 	@GetMapping("/get/{studentId}")
+	@ApiOperation(value = "Student Details Fetcn API By Id", notes = "Please provide Id Fetching student record", response = Student.class)
 	public ResponseEntity<StudentResponseDto> getStudentRecordsById(@PathVariable("studentId") Integer studentId) {
 		StudentResponseDto response = studentService.getDetailsById(studentId);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
@@ -71,7 +76,7 @@ public class StudentController {
 		String response = studentService.updateStudentName(name, studentId);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
-	
+
 	@DeleteMapping("/delete/{studentId}")
 	public ResponseEntity<String> deleteStudent(@PathVariable("studentId") Integer studentId) {
 		String response = studentService.deleteStudent(studentId);
